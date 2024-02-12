@@ -1,12 +1,8 @@
 # Premier-TACO is a Few-Shot Policy Learner: Pretraining Multitask Representation via Temporal Action-Driven Contrastive Loss
 
-## Introduction
-
-Thank you for your interest in our project! We are excited to share our developments and progress with the community.
-
 ## Coming Soon
 
-We are currently in the process of preparing our resources for release. This will include:
+Thank you for your interest in our project! We are currently in the process of preparing our resources for release. This will include:
 
 - **Pretraining Code:** The complete set of scripts and instructions needed to pretrain the encoder model.
 - **Data:** The datasets used during the pretraining phase.
