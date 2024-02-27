@@ -34,8 +34,7 @@ Then to load the pretrained encoder for downstream few-shot behavior cloning for
 python train_bc.py task_name=${TASK} seed=${SEED} exp_name=${BC_EXP_NAME} encoder_dir=${ENCODER_CKPT}  offline_data_dir=${DATA_DIR}/dmc_eval_data/${TASK} &
 ```
 
-Here, ```${ENCODER_CKPT}``` is the directory to the trained encoder checkpoint, ```${offline_data_dir}``` is the directory to the expert demonstration trajectories. The results will be saved under the directory ``exp_local/${BC_EXP_NAME}``.
-
+Here, ```${ENCODER_CKPT}``` is the directory to the trained encoder checkpoint. The results will be saved under the directory ```exp_local/${BC_EXP_NAME}```. 
 
 
 
