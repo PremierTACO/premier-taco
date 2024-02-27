@@ -4,7 +4,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import utils
-from r3m import load_r3m
 import torchvision.transforms as T
 import time
 from torch.nn.parallel import DistributedDataParallel as DDP

@@ -25,7 +25,7 @@ pip3 install torch==1.12.1+cu116 torchvision==0.13.1+cu116 --extra-index-url htt
 ## 💻 Code Usage
 To pretrain Premier-TACO representation representation, run
 ```
-python train_premier_taco_dist.py exp_name=EXP_NAME offline_data_dir=${DATA_DIR} 
+python train_premier_taco_dist.py exp_name=${EXP_NAME} offline_data_dir=${DATA_DIR} 
 ```
 Then after running the pretraining script, by default, the trained encoder will stored under the directory ```exp_local/${EXP_NAME}/encoder.pt```
 
