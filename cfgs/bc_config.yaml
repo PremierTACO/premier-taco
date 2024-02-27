@@ -1,0 +1,65 @@
+
+defaults:
+  - _self_
+  - override hydra/launcher: submitit_local
+
+### demonstration data directory
+offline_data_dir: ???
+
+### task settings
+task_name: ???
+frame_stack: 3
+action_repeat: 2
+
+### eval
+eval_freq: 1000
+num_eval_episodes: 10
+n_traj: 20
+
+### replay buffer
+replay_buffer_num_workers: 4
+nstep: 1
+batch_size: 256
+
+### misc
+exp_name: default
+seed: 1
+device: cuda
+save_video: false
+save_train_video: false
+use_tb: false
+save_snapshot: false
+
+# agent
+lr: 1e-4
+feature_dim: 100
+mse: true
+num_train_steps: 50000
+encoder_dir: none
+
+target: bc.BCAgent
+agent:
+  _target_: ${target}
+  obs_shape: ??? # to be specified later
+  action_shape: ??? # to be specified later
+  device: ${device}
+  lr: ${lr}
+  feature_dim: ${feature_dim}
+  hidden_dim: 1024
+  mse: ${mse}
+
+hydra:
+  run:
+    dir: ./exp_local/${exp_name}
+  sweep:
+    dir: ./exp/${now:%Y.%m.%d}/${now:%H%M}_${agent_cfg.experiment}
+    subdir: ${hydra.job.num}
+  launcher:
+    timeout_min: 4300
+    cpus_per_task: 10
+    gpus_per_node: 1
+    tasks_per_node: 1
+    mem_gb: 160
+    nodes: 1
+    submitit_folder: ./exp/${now:%Y.%m.%d}/${now:%H%M%S}_${agent_cfg.experiment}/.slurm
+
