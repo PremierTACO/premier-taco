@@ -11,6 +11,7 @@ To download the pretraining and evaluation dataset, run:
 ```
 bash download_dataset.sh ${DATA_DIR} 
 ```
+${DATA_DIR} is the directory where you store the dataset.
 
 
 # 🛠️ Installation Instructions
