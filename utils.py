@@ -185,15 +185,3 @@ def schedule(schdl, step):
                 return (1.0 - mix) * final1 + mix * final2
     raise NotImplementedError(schdl)
 
-
-# class ActionQuantizer(nn.Module):
-#     def __init__(self, agent):
-#         super().__init__()
-#         self.agent = agent
-#         set_requires_grad(self.agent, False)
-        
-#     def forward(self, action):
-#         action_en = self.agent.TACO.proj_aseq(action)
-#         _, _, _, _, min_encoding_indices = self.agent.TACO.quantizer(action_en)
-#         return min_encoding_indices
-        
