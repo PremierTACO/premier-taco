@@ -6,7 +6,7 @@
 This branch includes the PyTorch implementation of **Premier-TACO** for **Deepmind Control Suite (DMC)**. (The code for **MetaWorld** and **LIBERO** will be coming soon!) 
 Building upon the recent temporal action contrastive learning (TACO) objective, which obtains the state of art performance in visual control tasks, **Premier-TACO** additionally employs a simple yet effective negative example sampling strategy. This strategy is crucial in significantly boosting TACO’s computational efficiency, making large-scale multitask offline pretraining feasible. Our empirical evaluation in a diverse set of continuous control benchmarks including Deepmind Control Suite, MetaWorld, and LIBERO demonstrate Premier-TACO’s effectiveness in pretraining visual representations, significantly enhancing few-shot imitation learning of novel tasks.
 
-# 💾 Download Pretraining Dataset
+## 💾 Download Pretraining Dataset
 To download the pretraining and evaluation dataset, run:
 ```
 bash download_dataset.sh ${DATA_DIR} 
@@ -14,7 +14,7 @@ bash download_dataset.sh ${DATA_DIR}
 ${DATA_DIR} is the directory where you store the dataset.
 
 
-# 🛠️ Installation Instructions
+## 🛠️ Installation Instructions
 First, create a virtual environment and install all required packages. 
 ```bash
 conda env create -f conda_env.yml 
