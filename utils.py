@@ -1,7 +1,3 @@
-# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
 import random
 import re
 import time
@@ -16,57 +12,23 @@ from omegaconf import OmegaConf
 from torch import distributions as pyd
 from torch.distributions.utils import _standard_normal
 
-class AllGatherFunc(Function):
-    @staticmethod
-    def forward(ctx, input):
-        # Create output tensor
-        output = [torch.zeros_like(input) for _ in range(dist.get_world_size())]
-        dist.all_gather(output, input)
-        return tuple(output)
-
-    @staticmethod
-    def backward(ctx, *grad_outputs):
-        # Sum up the gradients from all outputs
-        grad_input = sum(grad_outputs)
-        return grad_input
-
-def off_diagonal(x):
-    # return a flattened view of the off-diagonal elements of a square matrix
-    n, m = x.shape
-    assert n == m
-    return x.flatten()[:-1].view(n - 1, n + 1)[:, 1:].flatten()
-
+def get_expert_reward():
+    return {
+        "cup_catch": 967.07,
+        "finger_spin": 959.5574,
+        "hopper_hop": 569.3279,
+        "cheetah_run": 911.56726,
+        "walker_walk": 957.15155,
+        "quadruped_walk": 826.2675,
+        "quadruped_run": 756.2795,
+        "humanoid_walk": 809.6231,
+        "dog_trot": 720.143,
+    }
 
 def set_requires_grad(net, value=False):
     """Enable/disable gradients for a given (sub)network."""
     for param in net.parameters():
         param.requires_grad_(value)
-
-### input shape: (batch_size, length, action_dim)
-### output shape: (batch_size, action_dim)
-class ActionEncoding(nn.Module):
-    def __init__(self, action_dim, latent_action_dim, multistep):
-        super().__init__()
-        self.action_dim = action_dim
-        self.action_tokenizer = nn.Sequential(
-            nn.Linear(action_dim, 64), nn.Tanh(),
-            nn.Linear(64, latent_action_dim)
-        )
-        self.action_seq_tokenizer = nn.Sequential(
-            nn.Linear(latent_action_dim*multistep, latent_action_dim*multistep),
-            nn.LayerNorm(latent_action_dim*multistep), nn.Tanh()
-        )
-        self.apply(weight_init)
-        
-    def forward(self, action, seq=False):
-        if seq:
-            batch_size = action.shape[0]
-            action = self.action_tokenizer(action) #(batch_size, length_action_dim)
-            action = action.reshape(batch_size, -1)
-            return self.action_seq_tokenizer(action)
-        else:
-            return self.action_tokenizer(action)
-
 
 
 class eval_mode:
