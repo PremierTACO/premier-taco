@@ -35,7 +35,8 @@ python train_bc.py task_name=${TASK} seed=${SEED} exp_name=${BC_EXP_NAME} encode
 ```
 
 Here, ```${ENCODER_CKPT}``` is the directory to the trained encoder checkpoint. We have also provided a pretrained encoder checkpoint under ```pretrained_ckpt/encoder.pt```. 
-To train imitation learning policy without pretrained encoder, remove ```encoder_dir``` from the script. The results will be saved under the directory ```exp_local/${BC_EXP_NAME}```. 
+To train imitation learning policy without pretrained encoder, remove ```encoder_dir``` from the script. 
+The results of downstream behavior cloning will be saved under the directory ```exp_local/${BC_EXP_NAME}```. 
 
 
 
