@@ -131,7 +131,6 @@ class Workspace:
         
             
     def load_encoder(self, encoder_dir):
-        #snapshot = self.work_dir / 'snapshot.pt'
         encoder_dir = Path(encoder_dir)
         with encoder_dir.open('rb') as f:
             payload = torch.load(f, map_location=torch.device('cuda'))
@@ -152,7 +151,7 @@ def main(cfg):
     from train_bc import Workspace as W
     root_dir = Path.cwd()
     workspace = W(cfg)
-    if cfg.encoder_dir != 'none':
+    if cfg.encoder_dir != None:
         workspace.load_encoder(cfg.encoder_dir)
     workspace.train()
 

@@ -35,7 +35,7 @@ lr: 1e-4
 feature_dim: 100
 mse: true
 num_train_steps: 50000
-encoder_dir: none
+encoder_dir: null
 
 target: bc.BCAgent
 agent:
