@@ -27,5 +27,5 @@ wget -P ${DATA_DIR} https://obj.umiacs.umd.edu/dmc-pretrain/dog_walk_replay.zip
 unzip "${DATA_DIR}/dog_walk_replay.zip" -d "${DATA_DIR}"
 
 echo "Download Evaluation Data"
-wget -P ${DATA_DIR} https://obj.umiacs.umd.edu/dmc-pretrain/acrobot_swingup_replay.zip
+wget -P ${DATA_DIR} https://obj.umiacs.umd.edu/dmc-pretrain/dmc_eval_data.zip
 unzip "${DATA_DIR}/dmc_eval_data.zip" -d "${DATA_DIR}"
