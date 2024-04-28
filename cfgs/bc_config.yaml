@@ -36,6 +36,7 @@ feature_dim: 100
 mse: true
 num_train_steps: 50000
 encoder_dir: null
+freeze_encoder: false
 
 target: bc.BCAgent
 agent:
