@@ -13,7 +13,6 @@ import torch
 from dm_env import specs
 
 import dmc
-import mw
 import utils
 from logger_offline import Logger
 from replay_buffer import make_replay_loader
